@@ -15,4 +15,16 @@ const romanEncoderConstant = {
 First do it for upto 10
 if number at left is less than number at right then it is substracted else it is added
 */
-const romanNumberEncoder = (number) => {};
+
+/* new logic 
+first divide by avaialable roman number 
+find the roman number which have smallest difference with 1 
+use that number, add and substract that number equals to given number
+
+*/
+const romanNumberEncoder = (number) => {
+  const digits = number.toString().split("").map(Number);
+
+};
+
+romanNumberEncoder();

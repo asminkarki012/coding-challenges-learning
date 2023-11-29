@@ -1,0 +1,22 @@
+{
+  "name": "learning-testcases",
+  "version": "18.16.0",
+  "description": "Learning how to write test cases using jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asminkarki012/DSA-problems.git"
+  },
+  "author": "asminkarki012",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asminkarki012/DSA-problems/issues"
+  },
+  "homepage": "https://github.com/asminkarki012/DSA-problems#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
