@@ -4,7 +4,8 @@
   "description": "Solving Coding Challenges",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start":"node /home/portpro-laptop/Documents/My_work/DSA-problems/CodeWars/romanToNumberEncoderrrrrr.js"
   },
   "repository": {
     "type": "git",
