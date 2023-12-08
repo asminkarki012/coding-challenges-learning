@@ -18,6 +18,8 @@ const maxSequence = function (arr) {
       leftPathSum += arr[leftTraverseIndex];
       pathAndSumObj.path = leftTraversePath;
       pathAndSumObj.sum = leftPathSum;
+      console.log("left pathandSumobj", pathAndSumArray);
+      pathAndSumArray.push(pathAndSumObj);
       leftTraverseIndex -= 1;
     }
     if (rightTraverseIndex !== arr.length + 1) {
@@ -26,6 +28,7 @@ const maxSequence = function (arr) {
       rightPathSum += arr[rightTraverseIndex];
       pathAndSumObj.path = rightTraversePath;
       pathAndSumObj.sum = rightPathSum;
+      console.log("right pathandSumobj", pathAndSumArray);
       pathAndSumArray.push(pathAndSumObj);
       rightTraverseIndex += 1;
     }
