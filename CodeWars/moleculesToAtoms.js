@@ -1,4 +1,5 @@
 //Molecule to atoms
+//done
 function parseMolecule(formula) {
   const BRACKETS = ["(", ")", "[", "]", "{", "}"];
   // const BRACKETS_OBJECT = { "(": ")", "[": "]", "{": "}" };

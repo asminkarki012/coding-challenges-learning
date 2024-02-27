@@ -1,3 +1,4 @@
+//done
 // Maximum subarray sum
 function maxSequence(arr) {
   let maxEndingHere = arr[0];

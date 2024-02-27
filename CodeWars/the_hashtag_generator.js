@@ -1,3 +1,4 @@
+//done
 function generateHashtag(str) {
   let hashedString = "";
   //condition for false;

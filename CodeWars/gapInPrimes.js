@@ -1,3 +1,4 @@
+//done
 function gap(g, m, n) {
   for (let i = m; i <= n - g; i++) {
     if (isPrime(i) && isPrime(i + g) && isSquential(i, i + g)) {
