@@ -1,7 +1,7 @@
 {
-  "name": "learning-testcases",
+  "name": "coding-challenges",
   "version": "18.16.0",
-  "description": "Learning how to write test cases using jest",
+  "description": "Solving Coding Challenges",
   "main": "index.js",
   "scripts": {
     "test": "test"
