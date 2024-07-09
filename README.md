@@ -1,2 +1,4 @@
-# DSA-problems
-Implementing DSA problems
+# Coding-Challenges
+- Implementing DSA problems
+- Solving Algorithmic challenges
+- OWT challenges
