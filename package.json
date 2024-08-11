@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start":"node /home/portpro-laptop/Documents/My_work/DSA-problems/CodeWars/romanToNumberEncoderrrrrr.js"
+    "start": "node /home/portpro-laptop/Documents/My_work/DSA-problems/CodeWars/romanToNumberEncoderrrrrr.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,13 @@
   "homepage": "https://github.com/asminkarki012/DSA-problems#readme",
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "concat-stream": "^2.0.0",
+    "duplexer2": "^0.1.4",
+    "split2": "^4.2.0",
+    "through2": "^4.0.2",
+    "trumpet": "^1.7.2",
+    "ws": "^8.18.0"
   }
 }
