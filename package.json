@@ -1,6 +1,6 @@
 {
   "name": "coding-challenges",
-  "version": "18.16.0",
+  "version": "0.0.6",
   "description": "Solving Coding Challenges",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "concat-stream": "^2.0.0",
     "duplexer2": "^0.1.4",
     "split2": "^4.2.0",
+    "tar-stream": "^3.1.7",
     "through2": "^4.0.2",
     "trumpet": "^1.7.2",
     "ws": "^8.18.0"

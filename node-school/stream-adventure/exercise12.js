@@ -1,5 +1,4 @@
 const trumpet = require("trumpet");
-const fs = require("fs");
 const through2 = require("through2");
 const tr = trumpet();
 
