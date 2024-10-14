@@ -15,16 +15,15 @@ function decodeBencode(bencodedValue) {
     //convert to number
     return +bencodedValue.slice(1, -1);
   } else if (isBencodedList) {
-      return decode(bencodedValue);
+      return decodeBecodedList(bencodedValue);
   } else if (isBencodedDict) {
     const bencodedDict = {};
   } else {
     throw new Error("Only strings are supported at the moment");
   }
 }
-decodeBencode("d3:foo3:bar5:helloi52ee");
 
-const decode = (bencodedValue,index=1) => {
+const decodeBecodedList = (bencodedValue,index=1) => {
   const bencodedList = [];
   const lengthOfValue =
     bencodedValue.indexOf("e") - bencodedValue.indexOf("l") - 1;
@@ -34,13 +33,11 @@ const decode = (bencodedValue,index=1) => {
 
   while (index <= lastIndex) {
     const value = bencodedValue[index];
-    console.log("indexxx",index,value);
       
     //dont consider final two ee
     const isMulti = bencodedValue.slice(index,-2)?.split('ee')?.filter(Boolean)?.length > 1 || false;
     if (value === "i") {
       const indexOfIntegerEnd = bencodedValue.indexOf("e", index);
-      console.log("isMulti ",isMulti);
       const integerLength = indexOfIntegerEnd - index + 1;
       const integerValue = bencodedValue.substr(index + 1, integerLength);
       const parseInteger = parseInt(integerValue);
@@ -55,7 +52,7 @@ const decode = (bencodedValue,index=1) => {
       index += strLength || 1;
     } else if (value === "l") {
         const end = bencodedValue.length -1; 
-        const multiBencoded = decode(bencodedValue.substr(index,end),index);
+        const multiBencoded = decodeBecodedList(bencodedValue.substr(index,end),index);
       if(isMulti){
         bencodedList.push(...multiBencoded);
       }else{
