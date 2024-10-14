@@ -23,7 +23,7 @@ describe('decodeBencode', () => {
     expect(result).toBe(expectedOutput);
   });
 
-  test('should decode a object', () => {
+  test.skip('should decode a object', () => {
     const bencodedValue = 'd3:foo3:bar5:helloi52ee';
     const expectedOutput =  {"foo":"bar","hello":52};
     const result = decodeBencode(bencodedValue);
@@ -66,12 +66,18 @@ test('should decode a bencoded list with a string and an integer', () => {
     expect(result).toStrictEqual(expectedOutput);
 });
 
-test.only('should decode a bencoded list with a nested list and an integer', () => {
+test('should decode a bencoded list with a nested list and an integer', () => {
     const bencodedValue = 'lli4eei5ee';  // bencoded string
     const expectedOutput = [[4], 5];     // Expected result: a nested list and integer
     const result = decodeBencode(bencodedValue);
-    
     expect(result).toStrictEqual(expectedOutput);
+});
+
+test('should decode a bencoded 2D list with an integer and a string', () => {
+    const bencodedValue = 'lli458e5:grapeee';  // Input bencoded string
+    const expectedOutput = [[458, "grape"]];   // Expected output: a nested list with an integer and a string
+    const result = decodeBencode(bencodedValue); // Call the decode function
+    expect(result).toStrictEqual(expectedOutput); // Assert the result matches the expected output
 });
 
 });

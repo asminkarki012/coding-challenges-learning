@@ -15,69 +15,7 @@ function decodeBencode(bencodedValue) {
     //convert to number
     return +bencodedValue.slice(1, -1);
   } else if (isBencodedList) {
-    const bencodedList = [];
-    const lengthOfValue =
-      bencodedValue.indexOf("e") - bencodedValue.indexOf("l") - 1;
-
-    if (!lengthOfValue) return bencodedList;
-    const lastIndex = bencodedValue.length - 1;
-    let index = 0 ;
-    while(index<=lastIndex){
-      const value = bencodedValue[i];
-
-      if(value ==='i'){
-      }
-      
-
-    }
-    const isMultiArr = bencodedValue.slice(0, 2) === "ll"
-    const splitByList = isMultiArr ? "ll" : "l"
-    const parts = bencodedValue.split(':');
-    const isIntegerFirst = parts[0].includes('i');
-
-    console.log("isIntegerFirst",isIntegerFirst);
-
-    const indexOfColon = bencodedValue.indexOf(":");
-    let strValue;
-    let parseInteger;
-     let endOfStringIndex=0
-    if(indexOfColon !== -1){
-    console.log('parts0',parts[0].length);
-    const lenghtOfStr = isIntegerFirst ? parseInt(parts[0].split('e')[1]):parseInt(parts[0].split(splitByList)[1]);
-    console.log("lenght of str",lenghtOfStr);
-     strValue = parts[1].substr(0, lenghtOfStr);
-     endOfStringIndex = isIntegerFirst ?  0 : indexOfColon + lenghtOfStr + 1;
-  console.log("strValue",strValue);
-    console.log('endofstring index',endOfStringIndex);
-
-    }
-
-    const indexOfInteger = bencodedValue.indexOf("i",endOfStringIndex );
-    const indexOfEnding = bencodedValue.indexOf("e", endOfStringIndex );
-    console.log('indexOfinteger',indexOfInteger,'indexofEnding',indexOfEnding);
-    const integerValue = bencodedValue.substr(
-      indexOfInteger + 1,
-      indexOfEnding - indexOfInteger - 1
-    );
-
-    console.log('intValue',integerValue)
-    parseInteger = parseInt(integerValue);
-    console.log(indexOfInteger, indexOfColon);
-
-    if (indexOfInteger > indexOfColon) {
-      strValue && bencodedList.push(strValue);
-      !isNaN(parseInteger) && bencodedList.push(parseInteger);
-    } else {
-      !isNaN(parseInteger) && bencodedList.push(parseInteger);
-      strValue && bencodedList.push(strValue);
-    }
-
-    console.log("isMulti",bencodedList)
-    if (isMultiArr) {
-      console.log('here',bencodedValue.slice(0,2));
-      return [bencodedList];
-    }
-    return bencodedList;
+      return decode(bencodedValue);
   } else if (isBencodedDict) {
     const bencodedDict = {};
   } else {
@@ -85,4 +23,48 @@ function decodeBencode(bencodedValue) {
   }
 }
 decodeBencode("d3:foo3:bar5:helloi52ee");
+
+const decode = (bencodedValue,index=1) => {
+  const bencodedList = [];
+  const lengthOfValue =
+    bencodedValue.indexOf("e") - bencodedValue.indexOf("l") - 1;
+
+  if (!lengthOfValue) return bencodedList;
+  const lastIndex = bencodedValue.length - 1;
+
+  while (index <= lastIndex) {
+    const value = bencodedValue[index];
+    console.log("indexxx",index,value);
+      
+    //dont consider final two ee
+    const isMulti = bencodedValue.slice(index,-2)?.split('ee')?.filter(Boolean)?.length > 1 || false;
+    if (value === "i") {
+      const indexOfIntegerEnd = bencodedValue.indexOf("e", index);
+      console.log("isMulti ",isMulti);
+      const integerLength = indexOfIntegerEnd - index + 1;
+      const integerValue = bencodedValue.substr(index + 1, integerLength);
+      const parseInteger = parseInt(integerValue);
+      const pushIntegerValue = isMulti ? [parseInteger] : parseInteger
+      !isNaN(parseInteger) && bencodedList.push(pushIntegerValue);
+      index += integerLength || 1;
+    } else if (value === ":") {
+      //capture digit between e and :
+      const strLength = parseInt(bencodedValue.match(/e?(\d+)\:/)?.[1]);
+      const strValue = bencodedValue.substr(index + 1, strLength);
+      strValue && bencodedList.push(strValue);
+      index += strLength || 1;
+    } else if (value === "l") {
+        const end = bencodedValue.length -1; 
+        const multiBencoded = decode(bencodedValue.substr(index,end),index);
+      if(isMulti){
+        bencodedList.push(...multiBencoded);
+      }else{
+        bencodedList.push(multiBencoded);
+      }
+        index+=end;
+    }
+    index+=1;
+  }
+  return bencodedList;
+};
 module.exports = decodeBencode;
