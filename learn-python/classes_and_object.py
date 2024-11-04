@@ -1,13 +1,13 @@
 # https://www.learnpython.org/en/Classes_and_Objects
 # define the Vehicle class
 class Vehicle:
-    def __init__(self, name, color, kind, value):
+    def __init__(self, name: str, color: str, kind: str, value: float):
         self.name = name
         self.kind = kind
         self.color = color
         self.value = value
 
-    def description(self):
+    def description(self) -> str:
         desc_str = "%s is a %s %s worth $%.2f." % (
             self.name,
             self.color,
