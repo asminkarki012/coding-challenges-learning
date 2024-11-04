@@ -1,3 +1,4 @@
+# https://www.learnpython.org/en/Classes_and_Objects
 # define the Vehicle class
 class Vehicle:
     def __init__(self, name, color, kind, value):
