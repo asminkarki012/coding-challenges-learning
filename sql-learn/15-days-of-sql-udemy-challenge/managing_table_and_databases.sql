@@ -33,13 +33,14 @@ price NUMERIC(4,2) CONSTRAINT price_check CHECK(price>1.99),
 release_date DATE CONSTRAINT date_check CHECK(release_date BETWEEN '01-01-1950' AND CURRENT_DATE) 
 );
 
+--get error price_check error on price run alter below then run this
+INSERT INTO songs (song_id,song_name,price,release_date) 
+VALUES (4,'SQL song',0.99,'2022-01-07');
+
 ALTER TABLE songs
 DROP CONSTRAINT price_check,
 ADD CONSTRAINT price_check CHECK(price >= 0.99);
 
---get error on price
-INSERT INTO songs (song_id,song_name,price,release_date) 
-VALUES (4,'SQL song',0.99,'2022-01-07');
 
 
 
