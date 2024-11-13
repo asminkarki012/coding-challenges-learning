@@ -98,7 +98,6 @@ def plotDecisionBoundary(plotData, theta, X, y):
                 z[i, j] = np.dot(mapFeature(ui, vj), theta)
 
         z = z.T  # important to transpose z before calling contour
-        # print(z)
 
         # Plot z = 0
         pyplot.contour(u, v, z, levels=[0], linewidths=2, colors='g')
