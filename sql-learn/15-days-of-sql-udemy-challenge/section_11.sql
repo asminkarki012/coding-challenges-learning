@@ -33,25 +33,20 @@ FROM
 
 --challenge 205 : RANK
 SELECT
-  *,
+  cl.name,
+  cl.country,
+  COUNT(*) as most_sales,
   RANK() OVER (
     PARTITION BY
       country
     ORDER BY
-      most_sales DESC
+      COUNT(*) DESC
   )
 FROM
-  (
-    SELECT
-      cl.name,
-      cl.country,
-      COUNT(*) as most_sales
-    FROM
-      customer_list cl
-      INNER JOIN payment p ON p.customer_id = cl.id
-    GROUP BY
-      cl.name,
-      cl.country
-  ) most_sales_customer
+  customer_list cl
+  INNER JOIN payment p ON p.customer_id = cl.id
+GROUP BY
+  cl.name,
+  cl.country
 LIMIT
   3;
