@@ -32,7 +32,8 @@ FROM
   flights;
 
 --challenge 205 : RANK
-SELECT
+SELECT * FROM
+(SELECT
   cl.name,
   cl.country,
   COUNT(*) as most_sales,
@@ -47,6 +48,5 @@ FROM
   INNER JOIN payment p ON p.customer_id = cl.id
 GROUP BY
   cl.name,
-  cl.country
-LIMIT
-  3;
+  cl.country) top_customer
+WHERE rank <= 3;
