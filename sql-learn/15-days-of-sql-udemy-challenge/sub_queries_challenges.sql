@@ -224,4 +224,3 @@ WHERE
     WHERE
       p1.customer_id = cu.customer_id
   );
-
