@@ -52,4 +52,6 @@ FROM
     GROUP BY
       cl.name,
       cl.country
-  ) most_sales_customer;
+  ) most_sales_customer
+LIMIT
+  3;
