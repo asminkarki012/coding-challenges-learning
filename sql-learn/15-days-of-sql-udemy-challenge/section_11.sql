@@ -32,21 +32,48 @@ FROM
   flights;
 
 --challenge 205 : RANK
-SELECT * FROM
-(SELECT
-  cl.name,
-  cl.country,
-  COUNT(*) as most_sales,
-  RANK() OVER (
-    PARTITION BY
-      country
-    ORDER BY
-      COUNT(*) DESC
-  )
+SELECT
+  *
 FROM
-  customer_list cl
-  INNER JOIN payment p ON p.customer_id = cl.id
-GROUP BY
-  cl.name,
-  cl.country) top_customer
-WHERE rank <= 3;
+  (
+    SELECT
+      cl.name,
+      cl.country,
+      COUNT(*) as most_sales,
+      RANK() OVER (
+        PARTITION BY
+          country
+        ORDER BY
+          COUNT(*) DESC
+      )
+    FROM
+      customer_list cl
+      INNER JOIN payment p ON p.customer_id = cl.id
+    GROUP BY
+      cl.name,
+      cl.country
+  ) top_customer
+WHERE
+  rank <= 3;
+
+-- challenge 209 LEAD and LAG
+SELECT
+  *,
+  today - previous_day as difference,
+  ROUND((today - previous_day) / previous_day * 100, 2) as percentage_growth
+FROM
+  (
+    SELECT
+      SUM(amount) as today,
+      DATE(payment_date),
+      LAG (SUM(amount)) OVER (
+        ORDER BY
+          DATE(payment_date)
+      ) as previous_day
+    FROM
+      payment
+    GROUP BY
+      DATE(payment_date)
+    ORDER BY
+      DATE(payment_date)
+  ) compare_revenue;
