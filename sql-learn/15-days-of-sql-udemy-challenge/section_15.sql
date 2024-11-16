@@ -22,5 +22,5 @@ UPDATE ON employees TO analyst_emp;
 --grant creating new db
 ALTER ROLE analyst_emp CREATEDB;
 
--- grant role to a user
+-- assign role to a user
 GRANT analyst_emp to mia;
