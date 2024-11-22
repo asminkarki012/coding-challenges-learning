@@ -3,7 +3,7 @@ import sys
 from os.path import join
 from matplotlib import pyplot
 
-sys.path.append('..')
+sys.path.append('../../')
 from submission import SubmissionBase
 
 
