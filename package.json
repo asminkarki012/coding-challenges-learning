@@ -1,11 +1,11 @@
 {
-  "name": "learning-testcases",
-  "version": "18.16.0",
-  "description": "Learning how to write test cases using jest",
+  "name": "coding-challenges",
+  "version": "0.0.6",
+  "description": "Solving Coding Challenges",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "start":"node /home/portpro-laptop/Documents/My_work/DSA-problems/CodeWars/romanToNumberEncoderrrrrr.js"
+    "test": "jest",
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,14 @@
   "homepage": "https://github.com/asminkarki012/DSA-problems#readme",
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "concat-stream": "^2.0.0",
+    "duplexer2": "^0.1.4",
+    "split2": "^4.2.0",
+    "tar-stream": "^3.1.7",
+    "through2": "^4.0.2",
+    "trumpet": "^1.7.2",
+    "ws": "^8.18.0"
   }
 }
