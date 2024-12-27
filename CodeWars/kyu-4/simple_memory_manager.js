@@ -47,7 +47,7 @@ class MemoryManager {
       delete this.memo[i]
     }
 
-    this.offset = releasedBlock - releasedBlock.size
+    this.offset = this.offset - releasedBlock.size
     this.memoSize = this.memoSize + releasedBlock.size
 
   }
