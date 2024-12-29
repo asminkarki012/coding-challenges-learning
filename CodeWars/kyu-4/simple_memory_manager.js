@@ -62,7 +62,7 @@ class MemoryManager {
     if (this.lookup.length === 0) throw new Error("pointer is in unallocated memory")
 
     for (const { start, end } of this.lookup) {
-      if (start >= pointer && end > pointer) {
+      if (start <= pointer && end > pointer) {
         return this.memo[pointer]
       }
     }
