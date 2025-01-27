@@ -1,6 +1,8 @@
+# LEVEL 1->2
+
 > `ls`  
 
 > `cat readme`
  </br>
 
- password:NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+password: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If

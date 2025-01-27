@@ -1,3 +1,4 @@
+# level 2-> level 3
 ``` bash
 foo@bar:~$ ssh bandit1@bandit.labs.overthewire.org -p 2220
 ```
@@ -7,27 +8,22 @@ foo@bar:~$ ssh bandit1@bandit.labs.overthewire.org -p 2220
 enter password from level1:
 NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
 
-```console
+```bash
 foo@bar:~$ cat ./-
 ```
 
-password for lvl 2: rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+password for lvl 2: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 
-```console
-foo@bar:~$ ssh bandit2@bandit.labs.overthewire.org -p 2220
+```bash
+foo@bar:~$ ssh bandit2@bandit.labs.overthewire.org -p 2220 
 ```
 </br>
 
-enter password from lvl 1: rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
-
-```console
-foo@bar:~$ ls
+```bash 
+bandit2@bandit:~$ cat ./spaces\ in\ this\ filename 
 ```
 
-```console
-foo@bar:~$ cat
-```
-
-password for lvl 3 : aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+password for lvl 3 : 
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
 
 
