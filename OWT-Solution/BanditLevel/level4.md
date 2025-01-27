@@ -14,9 +14,7 @@ cd inhere
 # -type f make sure its file
 # xargs takes input and feed to file
 # file analyzes content of files 
-find . -type f | xargs file
-cat ./-file07 
-
+find . -type f | xargs file | cut -d: -f1 | xargs cat
 ```
 password for level 5:
 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
