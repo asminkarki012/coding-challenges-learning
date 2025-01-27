@@ -13,6 +13,7 @@ use password from prev level
 
 ### SOLUTION:
 ``` bash
+ls -ll | cut -d' ' -f3
 ```
 
 password for level 7:
