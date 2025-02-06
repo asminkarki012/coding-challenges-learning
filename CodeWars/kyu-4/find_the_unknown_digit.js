@@ -38,9 +38,7 @@ function solveExpression(exp) {
 
     }
 
-    if (result !== -1) {
-      return result
-    }
+    if (result !== -1) return result
 
   }
   return -1
