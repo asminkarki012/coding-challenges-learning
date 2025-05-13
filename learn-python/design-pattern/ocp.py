@@ -1,6 +1,23 @@
 from enum import Enum
 
+# violation of OCP
+class ProductFilter:
+    def filter_by_color(self, products, color):
+        for p in products:
+            if p.color == color:
+                yield p
 
+    def filter_by_size(self, products, size):
+        for p in products:
+            if p.size == size:
+                yield p
+
+    def filter_by_size_and_color(self, products, size, color):
+        for p in products:
+            if p.color == color and p.size == size:
+                yield p
+
+# Implementing OCP 
 class Color(Enum):
     RED = 1
     GREEN = 2
